@@ -11,7 +11,7 @@ const Home = () => {
 
 
   const fetchNotes = async () =>{
-    var res = await fetch('https://notes-app-one-flax.vercel.app/api/notes')
+    var res = await fetch('https://notes-app-ruddy-two.vercel.app/api/notes')
     res = await res.json()
 
     setNotes(res.message)
@@ -28,7 +28,7 @@ const Home = () => {
 
   const submitHandler =async (e) =>{
     e.preventDefault()
-    var res = await fetch('https://notes-app-one-flax.vercel.app/api/notes',{
+    var res = await fetch('https://notes-app-ruddy-two.vercel.app/api/notes',{
       method:"POST",
       headers:{
         "content-type":"application/json"
@@ -51,7 +51,7 @@ const Home = () => {
 
 
   async function deleteNotes(id){
-    var res = await fetch(`https://notes-app-one-flax.vercel.app/api/notes/${id}`,{
+    var res = await fetch(`https://notes-app-ruddy-two.vercel.app/api/notes/${id}`,{
       method:"DELETE"
     })
     var jsonRes = await res.json()
@@ -76,7 +76,7 @@ const Home = () => {
 
   async function updateNotes(e){
     e.preventDefault()
-    var res = await fetch(`https://notes-app-one-flax.vercel.app/api/notes/${notesID}`,{
+    var res = await fetch(`https://notes-app-ruddy-two.vercel.app/api/notes/${notesID}`,{
       method:"PUT",
       headers:{
         "content-type":"application/json"
@@ -100,14 +100,14 @@ const Home = () => {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <form onSubmit={updateMode ? updateNotes : submitHandler} className="border-[1px] border-slate-200 my-10 p-4">
+      <form onSubmit={updateMode ? updateNotes : submitHandler} className="border-[1px] border-gray-200 my-10 p-4">
         <h2 className="text-2xl font-semibold mb-4">
-        {updateMode ? "Update":"Add"} <span className="text-blue-600">Notes</span>
+        {updateMode ? "Update":"Add"} <span className="text-gray-400">Notes</span>
         </h2>
 
         <input
           ref={titleInputTag}
-          className="block focus:outline-blue-600 w-full border-[1px] p-2 rounded-sm mb-2 border-slate-300"
+          className="block focus:outline-gray-600 w-full border-[1px] p-2 rounded-sm mb-2 border-gray-300"
           type="text"
           placeholder="Title"
           value={title}
@@ -115,14 +115,14 @@ const Home = () => {
           required
         />
         <textarea
-          className="block focus:outline-blue-600 w-full border-[1px] p-2 mb-2 rounded-sm border-slate-300"
+          className="block focus:outline-gray-600 w-full border-[1px] p-2 mb-2 rounded-sm border-gray-300"
           placeholder="Description"
           required
           value={desc}
           onChange={(e)=>setDesc(e.target.value)}
         />
 
-        <button className="py-1 px-2 bg-blue-600 rounded-sm text-white">
+        <button className="py-1 px-2 bg-gray-600 rounded-sm text-white">
           {updateMode ? "Update":"Submit"}
         </button>
       </form>
@@ -130,7 +130,7 @@ const Home = () => {
       <div>
         {notes.map((v,i) => {
           return (
-            <div key={v._id} className="border-[1px] border-slate-200 p-4 my-4">
+            <div key={v._id} className="border-[1px] border-gray-200 p-4 my-4">
               <h2 className="mb-1 font-semibold">{v.title}</h2>
               <p className="text-xs">
               {v.desc}
@@ -141,7 +141,7 @@ const Home = () => {
               </p>
 
               <div className="flex justify-end">
-                <i title="Edit" onClick={()=>setDataInForm(v)}  className="bx bx-edit text-blue-600 text-xl p-1 cursor-pointer"></i>
+                <i title="Edit" onClick={()=>setDataInForm(v)}  className="bx bx-edit text-gray-600 text-xl p-1 cursor-pointer"></i>
                 <i title="Delete" onClick={()=>window.confirm("Are you sure to delete this Note") && deleteNotes(v._id)} className="bx bx-trash text-red-700 text-xl p-1 cursor-pointer"></i>
               </div>
             </div>
