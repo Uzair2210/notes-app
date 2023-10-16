@@ -25,7 +25,7 @@ const Home = () => {
   var [title,setTitle] = useState('')
   var [desc,setDesc] = useState('')
 
-
+//create
   const submitHandler =async (e) =>{
     e.preventDefault()
     var res = await fetch('https://notes-app-ruddy-two.vercel.app/api/notes',{
@@ -49,7 +49,7 @@ const Home = () => {
 
   }
 
-
+//delete
   async function deleteNotes(id){
     var res = await fetch(`https://notes-app-ruddy-two.vercel.app/api/notes/${id}`,{
       method:"DELETE"

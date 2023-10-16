@@ -6,6 +6,7 @@ const cors = require("cors")
 app.use(cors())
 app.use(express.json())
 app.use('/api/notes',require('./routes/notes'))
+app.use('/api/auth',require('./routes/users'))
 
 
 mongoose.connect('mongodb+srv://uzair:uzair5225@uzaircluster.fdml45t.mongodb.net/notes?retryWrites=true&w=majority').then(()=>{
